@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Support — Nimbi</title>
+  <meta name="description" content="Get help with Nimbi, the AI bedtime story app. Find answers to common questions or contact us." />
+
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><defs><mask id='m'><circle cx='14' cy='16' r='10' fill='white'/><circle cx='18' cy='12' r='8.5' fill='black'/></mask></defs><rect width='32' height='32' fill='%230D0B14'/><circle cx='14' cy='16' r='10' fill='%23E8A95C' mask='url(%23m)'/></svg>" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600&family=Lora:wght@400;600&display=swap" rel="stylesheet" />
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg-base:        #0D0B14;
+      --bg-surface:     #16132A;
+      --bg-elevated:    #1E1B36;
+      --text-primary:   #F0EDE6;
+      --text-secondary: #B8B0A8;
+      --text-muted:     #7A7087;
+      --accent-amber:   #E8A95C;
+      --accent-moon:    #C8C0E8;
+      --divider:        #2A2640;
+      --radius-sm: 10px;
+      --radius-md: 16px;
+      --radius-lg: 24px;
+    }
+
+    body {
+      background-color: var(--bg-base);
+      color: var(--text-primary);
+      font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+      font-size: 16px;
+      line-height: 1.6;
+    }
+
+    /* NAV */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(13, 11, 20, 0.85);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--divider);
+      padding: 0 max(24px, calc((100vw - 1080px)/2));
+      height: 64px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .nav-logo {
+      display: flex; align-items: center; gap: 10px; text-decoration: none;
+    }
+    .nav-logo span {
+      font-family: 'Lora', Georgia, serif;
+      font-size: 20px; font-weight: 600; color: var(--text-primary);
+    }
+    .nav-back {
+      font-size: 14px; color: var(--text-muted); text-decoration: none;
+      display: flex; align-items: center; gap: 6px;
+      transition: color 0.2s;
+    }
+    .nav-back:hover { color: var(--text-primary); }
+
+    /* CONTENT */
+    .container {
+      max-width: 680px;
+      margin: 0 auto;
+      padding: 64px 24px 100px;
+    }
+
+    /* HEADER */
+    .support-header {
+      text-align: center;
+      margin-bottom: 60px;
+    }
+    .support-icon {
+      width: 64px; height: 64px;
+      background: var(--bg-surface);
+      border: 1px solid var(--divider);
+      border-radius: 20px;
+      display: flex; align-items: center; justify-content: center;
+      margin: 0 auto 24px;
+      font-size: 28px;
+    }
+    h1 {
+      font-family: 'Lora', Georgia, serif;
+      font-size: 36px; font-weight: 600; margin-bottom: 12px;
+    }
+    .support-sub {
+      font-size: 17px; color: var(--text-secondary); line-height: 1.6;
+    }
+
+    /* SEARCH (decorative) */
+    .search-bar {
+      display: flex; align-items: center; gap: 12px;
+      background: var(--bg-surface);
+      border: 1px solid var(--divider);
+      border-radius: var(--radius-md);
+      padding: 14px 20px;
+      margin-bottom: 48px;
+    }
+    .search-bar svg { flex-shrink: 0; opacity: 0.4; }
+    .search-bar span { color: var(--text-muted); font-size: 15px; }
+
+    /* SECTION */
+    .faq-section { margin-bottom: 48px; }
+    .faq-section-title {
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+      display: flex; align-items: center; gap: 10px;
+    }
+    .faq-section-title::after {
+      content: ''; flex: 1; height: 1px; background: var(--divider);
+    }
+
+    /* FAQ ITEMS */
+    .faq-item {
+      border: 1px solid var(--divider);
+      border-radius: var(--radius-md);
+      margin-bottom: 10px;
+      overflow: hidden;
+      transition: border-color 0.2s;
+    }
+    .faq-item:hover { border-color: rgba(200,192,232,0.3); }
+
+    .faq-item summary {
+      padding: 18px 20px;
+      cursor: pointer;
+      font-weight: 500;
+      font-size: 16px;
+      color: var(--text-primary);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+      list-style: none;
+      user-select: none;
+    }
+    .faq-item summary::-webkit-details-marker { display: none; }
+    .faq-item summary::after {
+      content: '+';
+      font-size: 20px;
+      color: var(--text-muted);
+      font-weight: 300;
+      flex-shrink: 0;
+      transition: transform 0.2s;
+    }
+    .faq-item[open] summary::after {
+      transform: rotate(45deg);
+    }
+    .faq-item[open] summary {
+      border-bottom: 1px solid var(--divider);
+      color: var(--accent-amber);
+    }
+    .faq-body {
+      padding: 18px 20px;
+      font-size: 15px;
+      color: var(--text-secondary);
+      line-height: 1.7;
+      background: var(--bg-surface);
+    }
+    .faq-body a {
+      color: var(--accent-amber);
+      text-decoration: none;
+    }
+    .faq-body a:hover { text-decoration: underline; }
+
+    /* CONTACT CARD */
+    .contact-card {
+      background: var(--bg-surface);
+      border: 1px solid var(--divider);
+      border-radius: var(--radius-lg);
+      padding: 36px 32px;
+      text-align: center;
+      margin-top: 48px;
+    }
+    .contact-card h2 {
+      font-family: 'Lora', Georgia, serif;
+      font-size: 24px; font-weight: 600; margin-bottom: 10px;
+    }
+    .contact-card p {
+      font-size: 15px; color: var(--text-secondary); margin-bottom: 24px;
+    }
+    .contact-email {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: var(--bg-elevated);
+      border: 1px solid var(--divider);
+      border-radius: var(--radius-md);
+      padding: 14px 24px;
+      color: var(--accent-amber);
+      font-size: 16px;
+      font-weight: 500;
+      text-decoration: none;
+      transition: border-color 0.2s, background 0.2s;
+    }
+    .contact-email:hover {
+      border-color: var(--accent-amber);
+      background: rgba(232,169,92,0.05);
+    }
+    .contact-note {
+      font-size: 13px;
+      color: var(--text-muted);
+      margin-top: 16px;
+    }
+
+    /* FOOTER */
+    footer {
+      border-top: 1px solid var(--divider);
+      padding: 28px 24px;
+      max-width: 680px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    footer a {
+      font-size: 13px; color: var(--text-muted);
+      text-decoration: none; transition: color 0.2s;
+    }
+    footer a:hover { color: var(--text-primary); }
+    .footer-copy { font-size: 13px; color: var(--text-muted); }
+
+    @media (max-width: 600px) {
+      h1 { font-size: 28px; }
+      .contact-card { padding: 28px 20px; }
+    }
+  </style>
+</head>
+
+<body>
+
+  <nav>
+    <a class="nav-logo" href="index.html">
+      <svg width="26" height="26" viewBox="0 0 28 28" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <mask id="nav-moon-s"><circle cx="13" cy="14" r="10" fill="white"/><circle cx="17.5" cy="10.5" r="8.5" fill="black"/></mask>
+          <radialGradient id="nav-mg-s" cx="35%" cy="30%" r="65%"><stop offset="0%" stop-color="#FFF0C0"/><stop offset="100%" stop-color="#E8A95C"/></radialGradient>
+        </defs>
+        <circle cx="13" cy="14" r="10" fill="url(#nav-mg-s)" mask="url(#nav-moon-s)"/>
+      </svg>
+      <span>nimbi</span>
+    </a>
+    <a class="nav-back" href="index.html">← Back to home</a>
+  </nav>
+
+  <div class="container">
+
+    <!-- Header -->
+    <div class="support-header">
+      <div class="support-icon">🌙</div>
+      <h1>How can we help?</h1>
+      <p class="support-sub">Find answers below, or reach out directly. We're a small team and we read every message.</p>
+    </div>
+
+    <!-- Search (decorative) -->
+    <div class="search-bar" role="search" aria-label="Search support">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#F0EDE6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/>
+      </svg>
+      <span>Search support topics…</span>
+    </div>
+
+    <!-- GETTING STARTED -->
+    <div class="faq-section">
+      <div class="faq-section-title">Getting started</div>
+
+      <details class="faq-item">
+        <summary>How do I create my first story?</summary>
+        <div class="faq-body">
+          When you first open Nimbi, you'll set up a child profile — name, age, and favorite interests. Once that's done, you'll land on the Home screen where you can pick a story length, choose a mood, and tap <strong>Generate Story</strong>. Your first story will be ready in a few seconds.
+        </div>
+      </details>
+
+      <details class="faq-item">
+        <summary>Can I add more than one child?</summary>
+        <div class="faq-body">
+          Yes! You can add multiple child profiles from the Profiles section (bookmark icon on the Home screen). Each child has their own interests and story history, so bedtime stays personal for everyone.
+        </div>
+      </details>
+
+      <details class="faq-item">
+        <summary>Do I need to create an account?</summary>
+        <div class="faq-body">
+          No. Nimbi works without any account or login. Everything is saved locally on your device. We believe bedtime shouldn't require signing up for anything.
+        </div>
+      </details>
+
+      <details class="faq-item">
+        <summary>What age range is Nimbi designed for?</summary>
+        <div class="faq-body">
+          Nimbi is best suited for children aged 2 to 10. Stories automatically adjust in vocabulary, length, and complexity based on your child's age. Toddler stories are shorter and simpler; stories for older children may have richer language and more developed plots.
+        </div>
+      </details>
+    </div>
+
+    <!-- STORIES -->
+    <div class="faq-section">
+      <div class="faq-section-title">Stories &amp; content</div>
+
+      <details class="faq-item">
+        <summary>How are the stories generated?</summary>
+        <div class="faq-body">
+          Each story is created by an AI model at the moment you tap Generate. It uses the details from your child's profile — their interests, age, and mood — to craft a unique story. No two stories are the same. An internet connection is required for generation, which typically takes 5–15 seconds.
+        </div>
+      </details>
+
+      <details class="faq-item">
+        <summary>Are the stories safe for children?</summary>
+        <div class="faq-body">
+          Yes. Nimbi's story generation is specifically constrained to produce calm, age-appropriate content. Stories never include violence, scary elements, or overstimulating plots. The AI is instructed to end every story peacefully — helping children wind down, not stay awake.
+        </div>
+      </details>
+
+      <details class="faq-item">
+        <summary>What are the "learning values" I see on each story?</summary>
+        <div class="faq-body">
+          Each story weaves in a gentle learning value — such as kindness, courage, or curiosity — naturally into the narrative. It's never preachy or lesson-like; it's just part of the story world. The value label appears as a small pill above the story title.
+        </div>
+      </details>
+
+      <details class="faq-item">
+        <summary>Can I save stories to read again?</summary>
+        <div class="faq-body">
+          Yes. Tap the heart icon while reading to save a story to your Favorites. Saved stories are available offline and remain on your device until you delete them.
+        </div>
+      </details>
+
+      <details class="faq-item">
+        <summary>Why does my story disappear if I don't save it?</summary>
+        <div class="faq-body">
+          To protect privacy and keep the app simple, unsaved stories are not kept after you leave the reader. If you'd like to keep a story, tap the ♡ heart button before closing. We recommend saving any story your child particularly enjoys.
+        </div>
+      </details>
+    </div>
+
+    <!-- LANGUAGE -->
+    <div class="faq-section">
+      <div class="faq-section-title">Language</div>
+
+      <details class="faq-item">
+        <summary>How does the bilingual support work?</summary>
+        <div class="faq-body">
+          Nimbi has two independent language settings: the <strong>app language</strong> (menus, buttons, labels) and the <strong>story language</strong> (the generated story content). Both can be set independently — so you can have the app in English while stories generate in Spanish, or vice versa.
+        </div>
+      </details>
+
+      <details class="faq-item">
+        <summary>How do I change the app language?</summary>
+        <div class="faq-body">
+          Go to the Settings screen (gear icon on the Home screen) and select your preferred language under <strong>App Language</strong>. The change takes effect immediately.
+        </div>
+      </details>
+
+      <details class="faq-item">
+        <summary>How do I change the story language?</summary>
+        <div class="faq-body">
+          On the Home screen, use the language toggle (EN / ES) to choose which language your next story will be generated in. This only affects the story content, not the app interface.
+        </div>
+      </details>
+    </div>
+
+    <!-- PRIVACY & DATA -->
+    <div class="faq-section">
+      <div class="faq-section-title">Privacy &amp; data</div>
+
+      <details class="faq-item">
+        <summary>Where is my data stored?</summary>
+        <div class="faq-body">
+          All your data — child profiles, saved stories, settings — is stored locally on your device. Nothing is uploaded to our servers. The only data that leaves your device is the story generation request, which includes your child's age, interests, and mood. This is sent to our AI provider to generate the story and is not retained.
+        </div>
+      </details>
+
+      <details class="faq-item">
+        <summary>Does Nimbi track my usage?</summary>
+        <div class="faq-body">
+          Nimbi collects minimal, anonymized analytics to understand how the app is being used (e.g., which features are popular, how often stories are generated). This data is never tied to identifiable information. See our <a href="privacy-policy.html">Privacy Policy</a> for full details.
+        </div>
+      </details>
+
+      <details class="faq-item">
+        <summary>How do I delete my data?</summary>
+        <div class="faq-body">
+          Since all data is stored on your device, you can delete it at any time by removing the app. All profiles, saved stories, and preferences will be permanently deleted. We do not hold a copy.
+        </div>
+      </details>
+    </div>
+
+    <!-- TECHNICAL -->
+    <div class="faq-section">
+      <div class="faq-section-title">Technical</div>
+
+      <details class="faq-item">
+        <summary>The story is taking a long time to generate. What's wrong?</summary>
+        <div class="faq-body">
+          Story generation requires an active internet connection and typically takes 5–15 seconds. If it's taking longer, check your connection. If the issue persists, close and reopen the app and try again. If problems continue, <a href="mailto:support@nimbi.app">contact us</a>.
+        </div>
+      </details>
+
+      <details class="faq-item">
+        <summary>Can I use Nimbi offline?</summary>
+        <div class="faq-body">
+          You can read saved (favorited) stories offline anytime. Generating new stories requires an internet connection since the AI runs in the cloud.
+        </div>
+      </details>
+
+      <details class="faq-item">
+        <summary>Which devices does Nimbi support?</summary>
+        <div class="faq-body">
+          Nimbi is currently available for iPhone and iPad running iOS 16 or later. We're working on an Android version — stay tuned.
+        </div>
+      </details>
+    </div>
+
+    <!-- CONTACT -->
+    <div class="contact-card">
+      <h2>Still need help?</h2>
+      <p>We're a small team and we genuinely care about making Nimbi work well for your family. Send us an email and we'll get back to you.</p>
+      <a href="mailto:support@nimbi.app" class="contact-email">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="2" y="4" width="20" height="16" rx="2"/>
+          <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/>
+        </svg>
+        support@nimbi.app
+      </a>
+      <p class="contact-note">We typically respond within 1–2 business days.</p>
+    </div>
+
+  </div><!-- /container -->
+
+  <footer>
+    <a href="index.html">← Back to Nimbi</a>
+    <div style="display:flex;gap:20px;">
+      <a href="privacy-policy.html">Privacy Policy</a>
+      <a href="politica-privacidad.html">Política de Privacidad</a>
+    </div>
+    <p class="footer-copy">© 2025 Nimbi</p>
+  </footer>
+
+</body>
+</html>
