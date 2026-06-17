@@ -63,14 +63,36 @@
     .nav-right {
       display: flex;
       align-items: center;
-      gap: 20px;
+      gap: 24px;
     }
-    .nav-back {
-      font-size: 14px; color: var(--text-muted); text-decoration: none;
-      display: flex; align-items: center; gap: 6px;
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 32px;
+      list-style: none;
+    }
+    .nav-links a {
+      color: var(--text-secondary);
+      text-decoration: none;
+      font-size: 15px;
       transition: color 0.2s;
     }
-    .nav-back:hover { color: var(--text-primary); }
+    .nav-links a:hover { color: var(--text-primary); }
+    .btn-nav {
+      background: var(--accent-amber);
+      color: #1A1000;
+      border: none;
+      border-radius: var(--radius-sm);
+      padding: 9px 20px;
+      font-family: inherit;
+      font-size: 14px;
+      font-weight: 600;
+      cursor: pointer;
+      text-decoration: none;
+      transition: opacity 0.2s;
+    }
+    .btn-nav:hover { opacity: 0.88; }
+    @media (max-width: 768px) { .nav-links { display: none; } }
 
     /* ── LANG SWITCHER ── */
     .lang-switcher {
@@ -264,12 +286,17 @@
     </a>
 
     <div class="nav-right">
+      <ul class="nav-links">
+        <li><a href="index.html#features" data-t="nav_features">Features</a></li>
+        <li><a href="index.html#how" data-t="nav_how">How it works</a></li>
+        <li><a href="support.html" data-t="nav_support">Support</a></li>
+      </ul>
       <div class="lang-switcher">
         <button class="lang-btn active" data-lang="en" onclick="setLang('en')">EN</button>
         <span class="lang-sep">|</span>
         <button class="lang-btn" data-lang="es" onclick="setLang('es')">ES</button>
       </div>
-      <a class="nav-back" href="index.html" data-t="nav_back">← Back to home</a>
+      <a href="index.html#download" class="btn-nav" data-t="nav_download">Download</a>
     </div>
   </nav>
 
@@ -460,7 +487,10 @@
     const t = {
       en: {
         page_title: 'Support — Nimbi',
-        nav_back: '← Back to home',
+        nav_features: 'Features',
+        nav_how: 'How it works',
+        nav_support: 'Support',
+        nav_download: 'Download',
         header_h1: 'How can we help?',
         header_sub: 'Find answers below, or reach out directly.',
         sect_start: 'Getting started',
@@ -514,7 +544,10 @@
       },
       es: {
         page_title: 'Soporte — Nimbi',
-        nav_back: '← Volver al inicio',
+        nav_features: 'Características',
+        nav_how: 'Cómo funciona',
+        nav_support: 'Soporte',
+        nav_download: 'Descargar',
         header_h1: '¿En qué podemos ayudarte?',
         header_sub: 'Encuentra respuestas abajo o contáctanos directamente.',
         sect_start: 'Primeros pasos',

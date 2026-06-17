@@ -59,14 +59,36 @@
     .nav-right {
       display: flex;
       align-items: center;
-      gap: 20px;
+      gap: 24px;
     }
-    .nav-back {
-      font-size: 14px; color: var(--text-muted); text-decoration: none;
-      display: flex; align-items: center; gap: 6px;
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 32px;
+      list-style: none;
+    }
+    .nav-links a {
+      color: var(--text-secondary);
+      text-decoration: none;
+      font-size: 15px;
       transition: color 0.2s;
     }
-    .nav-back:hover { color: var(--text-primary); }
+    .nav-links a:hover { color: var(--text-primary); }
+    .btn-nav {
+      background: var(--accent-amber);
+      color: #1A1000;
+      border: none;
+      border-radius: var(--radius-sm);
+      padding: 9px 20px;
+      font-family: inherit;
+      font-size: 14px;
+      font-weight: 600;
+      cursor: pointer;
+      text-decoration: none;
+      transition: opacity 0.2s;
+    }
+    .btn-nav:hover { opacity: 0.88; }
+    @media (max-width: 768px) { .nav-links { display: none; } }
 
     /* ── LANG SWITCHER ── */
     .lang-switcher {
@@ -203,12 +225,17 @@
     </a>
 
     <div class="nav-right">
+      <ul class="nav-links">
+        <li><a href="index.html#features">Características</a></li>
+        <li><a href="index.html#how">Cómo funciona</a></li>
+        <li><a href="support.html">Soporte</a></li>
+      </ul>
       <div class="lang-switcher">
         <a class="lang-btn" href="privacy-policy.html">EN</a>
         <span class="lang-sep">|</span>
         <span class="lang-btn active">ES</span>
       </div>
-      <a class="nav-back" href="index.html">← Volver al inicio</a>
+      <a href="index.html#download" class="btn-nav">Descargar</a>
     </div>
   </nav>
 
