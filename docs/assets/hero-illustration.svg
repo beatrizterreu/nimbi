@@ -172,21 +172,6 @@
     <!-- Screen background -->
     <rect x="172" y="142" width="216" height="456" fill="#0D0B14"/>
 
-    <!-- Chrome bar -->
-    <rect x="172" y="142" width="216" height="56" fill="#1E1B36"/>
-
-    <!-- Back arrow -->
-    <path d="M198 170 L192 170" stroke="#B8B0A8" stroke-width="1.8" stroke-linecap="round"/>
-    <path d="M192 170 L196 166" stroke="#B8B0A8" stroke-width="1.8" stroke-linecap="round"/>
-    <path d="M192 170 L196 174" stroke="#B8B0A8" stroke-width="1.8" stroke-linecap="round"/>
-
-    <!-- Heart icon -->
-    <path d="M363 168 C363 165 365 163 367.5 163 C370 163 372 165 372 168 C372 173 367.5 177 367.5 177 C367.5 177 363 173 363 168Z"
-          fill="none" stroke="#B8B0A8" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-
-    <!-- Divider under chrome bar -->
-    <line x1="172" y1="198" x2="388" y2="198" stroke="#2A2640" stroke-width="0.5" opacity="0.5"/>
-
     <!-- AI disclaimer pill -->
     <rect x="214" y="210" width="132" height="22" rx="11" fill="#16132A"/>
     <text x="280" y="225" text-anchor="middle" fill="#7A7087" font-family="-apple-system, sans-serif" font-size="9.5">✦ AI Generated Story</text>
