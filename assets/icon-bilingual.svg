@@ -1,0 +1,21 @@
+<svg viewBox="0 0 56 56" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <radialGradient id="glow-b" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#C8C0E8" stop-opacity="0.15"/>
+      <stop offset="100%" stop-color="#C8C0E8" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <circle cx="28" cy="28" r="28" fill="url(#glow-b)"/>
+  <!-- Speech bubble left (EN) -->
+  <path d="M10 16 Q10 10 16 10 L28 10 Q34 10 34 16 L34 26 Q34 32 28 32 L18 32 L13 37 L14 32 Q10 32 10 26 Z"
+        fill="none" stroke="#C8C0E8" stroke-width="1.6" stroke-linejoin="round"/>
+  <text x="22" y="25" text-anchor="middle" fill="#C8C0E8"
+        font-family="-apple-system, sans-serif" font-size="9" font-weight="600">EN</text>
+  <!-- Speech bubble right (ES) — offset -->
+  <path d="M24 26 Q24 20 30 20 L42 20 Q48 20 48 26 L48 36 Q48 42 42 42 L34 42 L43 47 L42 42 Q48 42 48 36"
+        fill="none" stroke="#E8A95C" stroke-width="1.6" stroke-linejoin="round"/>
+  <path d="M24 26 Q24 20 30 20 L42 20 Q48 20 48 26 L48 36 Q48 42 42 42 L32 42 L27 47 L28 42 Q24 42 24 36 Z"
+        fill="none" stroke="#E8A95C" stroke-width="1.6" stroke-linejoin="round"/>
+  <text x="36" y="35" text-anchor="middle" fill="#E8A95C"
+        font-family="-apple-system, sans-serif" font-size="9" font-weight="600">ES</text>
+</svg>
