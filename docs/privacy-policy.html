@@ -44,18 +44,24 @@
       backdrop-filter: blur(16px);
       -webkit-backdrop-filter: blur(16px);
       border-bottom: 1px solid var(--divider);
-      padding: 0 max(24px, calc((100vw - 680px)/2));
+      padding: 0 max(24px, calc((100vw - 1080px)/2));
       height: 64px;
       display: flex;
       align-items: center;
       justify-content: space-between;
     }
     .nav-logo {
-      display: flex; align-items: center; gap: 10px; text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
     }
     .nav-logo span {
       font-family: 'Lora', Georgia, serif;
-      font-size: 20px; font-weight: 600; color: var(--text-primary);
+      font-size: 20px;
+      font-weight: 600;
+      color: var(--text-primary);
+      letter-spacing: 0.3px;
     }
     .nav-right {
       display: flex;
@@ -75,6 +81,28 @@
       transition: color 0.2s;
     }
     .nav-links a:hover { color: var(--text-primary); }
+    .lang-switcher {
+      display: flex;
+      align-items: center;
+      gap: 2px;
+    }
+    .lang-btn {
+      background: none;
+      border: none;
+      color: var(--text-muted);
+      font-family: inherit;
+      font-size: 13px;
+      font-weight: 600;
+      cursor: pointer;
+      padding: 4px 7px;
+      border-radius: 6px;
+      transition: color 0.2s, background 0.2s;
+      letter-spacing: 0.5px;
+      text-decoration: none;
+    }
+    .lang-btn:hover { color: var(--text-primary); }
+    .lang-btn.active { color: var(--accent-amber); }
+    .lang-sep { color: var(--divider); font-size: 13px; user-select: none; }
     .btn-nav {
       background: var(--accent-amber);
       color: #1A1000;
@@ -91,33 +119,9 @@
     .btn-nav:hover { opacity: 0.88; }
     @media (max-width: 768px) { .nav-links { display: none; } }
 
-    /* ── LANG SWITCHER ── */
-    .lang-switcher {
-      display: flex;
-      align-items: center;
-      gap: 2px;
-    }
-    .lang-btn {
-      background: none;
-      border: none;
-      color: var(--text-muted);
-      font-family: inherit;
-      font-size: 13px;
-      font-weight: 600;
-      cursor: pointer;
-      padding: 4px 7px;
-      border-radius: 6px;
-      transition: color 0.2s;
-      letter-spacing: 0.5px;
-      text-decoration: none;
-    }
-    .lang-btn:hover { color: var(--text-primary); }
-    .lang-btn.active { color: var(--accent-amber); }
-    .lang-sep { color: var(--divider); font-size: 13px; user-select: none; }
-
     /* ── CONTENT ── */
     .container {
-      max-width: 680px;
+      max-width: 1080px;
       margin: 0 auto;
       padding: 64px 24px 100px;
     }
@@ -190,7 +194,7 @@
     footer {
       border-top: 1px solid var(--divider);
       padding: 28px 24px;
-      max-width: 680px;
+      max-width: 1080px;
       margin: 0 auto;
       display: flex;
       align-items: center;
@@ -215,12 +219,19 @@
 
   <nav>
     <a class="nav-logo" href="index.html">
-      <svg width="26" height="26" viewBox="0 0 28 28" xmlns="http://www.w3.org/2000/svg">
+      <svg width="28" height="28" viewBox="0 0 28 28" xmlns="http://www.w3.org/2000/svg">
         <defs>
-          <mask id="nav-moon-p"><circle cx="13" cy="14" r="10" fill="white"/><circle cx="17.5" cy="10.5" r="8.5" fill="black"/></mask>
-          <radialGradient id="nav-mg-p" cx="35%" cy="30%" r="65%"><stop offset="0%" stop-color="#FFF0C0"/><stop offset="100%" stop-color="#E8A95C"/></radialGradient>
+          <mask id="nav-moon-p">
+            <circle cx="13" cy="14" r="10" fill="white"/>
+            <circle cx="17.5" cy="10.5" r="8.5" fill="black"/>
+          </mask>
+          <radialGradient id="nav-mg-p" cx="35%" cy="30%" r="65%">
+            <stop offset="0%" stop-color="#FFF0C0"/>
+            <stop offset="100%" stop-color="#E8A95C"/>
+          </radialGradient>
         </defs>
         <circle cx="13" cy="14" r="10" fill="url(#nav-mg-p)" mask="url(#nav-moon-p)"/>
+        <circle cx="22" cy="8" r="1.4" fill="#F5E6A0" opacity="0.9"/>
       </svg>
       <span>Nimbi</span>
     </a>
